@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Tipo de Producto</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-5">
+
+    <h1 class="mb-4">➕ Crear Tipo de Producto</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="card p-4">
+            <label>Nombre del tipo:</label>
+            <input type="text" name="nombre" class="form-control" required>
+
+            <button class="btn btn-success mt-3">Guardar</button>
+            <a href="{% url 'lista_productos' %}" class="btn btn-secondary mt-3">Volver</a>
+        </div>
+    </form>
+
+</div>
+
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

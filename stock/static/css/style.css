@@ -1,0 +1,363 @@
+/* ========================================
+   SISTEMA DE GESTIÓN DE PRODUCTOS
+   Estilo Profesional y Corporativo
+======================================== */
+
+/* -------------------- GLOBALES -------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #2c3e50;
+}
+
+.container {
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* -------------------- TÍTULOS -------------------- */
+h1 {
+    color: #1a252f;
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+/* -------------------- HEADER DE LISTA -------------------- */
+.lista-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 20px;
+    flex-wrap: wrap;
+    border-bottom: 2px solid #e8eef3;
+    padding-bottom: 20px;
+}
+
+.lista-header h1 {
+    margin-bottom: 0;
+    flex: 1;
+    min-width: 250px;
+}
+
+/* -------------------- BOTONES -------------------- */
+.btn {
+    border-radius: 6px;
+    padding: 11px 24px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: all 0.2s ease;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary {
+    background: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2980b9;
+    color: white;
+}
+
+.btn-success {
+    background: #27ae60;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #229954;
+    color: white;
+}
+
+.btn-secondary {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #7f8c8d;
+    color: white;
+}
+
+.btn-info {
+    background: #3498db;
+    color: white;
+}
+
+.btn-info:hover {
+    background: #2980b9;
+    color: white;
+}
+
+.btn-danger {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+    color: white;
+}
+
+.btn-sm {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+}
+
+/* -------------------- ESPACIADO DE BOTONES -------------------- */
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+/* Botones uno al lado del otro */
+.btn + .btn {
+    margin-left: 10px;
+}
+
+/* -------------------- TARJETAS (CARDS) -------------------- */
+.card {
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background: #dedede;
+}
+
+.p-4 {
+    padding: 2rem;
+}
+
+/* -------------------- FORMULARIOS -------------------- */
+.form-control, select.form-control {
+    border-radius: 6px;
+    border: 1px solid #d1dce5;
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+    background: white;
+}
+
+.form-control:focus, select.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    outline: none;
+}
+
+label {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    display: block;
+    font-size: 0.95rem;
+}
+
+/* -------------------- TABLAS -------------------- */
+.table {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+    background: white;
+    margin-bottom: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.table-bordered {
+    border: 1px solid #e8eef3;
+}
+
+.table-dark {
+    background: #34495e;
+    color: white;
+}
+
+.table-dark th {
+    border: none;
+    padding: 14px 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+.table-striped tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f1f3f5;
+}
+
+.table-striped tbody tr:hover {
+    background-color: #d6e4ec;
+}
+
+.table td {
+    padding: 14px 16px;
+    vertical-align: middle;
+    border-color: #e8eef3;
+    font-size: 0.9rem;
+}
+
+.text-center {
+    text-align: center;
+    color: #7f8c8d;
+    padding: 40px 20px;
+}
+
+/* -------------------- ESTILOS PARA ACTUALIZAR STOCK -------------------- */
+.stock-display {
+    background: #34495e;
+    color: white;
+    padding: 24px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    border: 1px solid #2c3e50;
+}
+
+.stock-display strong {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    opacity: 0.85;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.acciones-stock {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.acciones-stock .btn {
+    flex: 1;
+    min-width: 150px;
+    font-size: 1rem;
+    padding: 13px 28px;
+}
+
+/* -------------------- ESTILOS PARA CREAR PRODUCTO -------------------- */
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e8eef3;
+}
+
+.page-header h1 {
+    font-size: 2.4rem;
+    margin-bottom: 0;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    border-top: 1px solid #e8eef3;
+}
+
+.form-actions .btn {
+    flex: 1;
+    min-width: 150px;
+    padding: 13px 28px;
+    font-size: 1rem;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+/* -------------------- RESPONSIVE -------------------- */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .table {
+        font-size: 0.85rem;
+    }
+    
+    .table td, .table th {
+        padding: 10px;
+    }
+    
+    .lista-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .btn + .btn {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+
+/* -------------------- UTILIDADES -------------------- */
+.bg-light {
+    background-color: transparent !important;
+}

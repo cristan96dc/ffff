@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Historial de Ventas</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}"></head>
+
+<body>
+
+<div class="container">
+
+    <!-- Título -->
+    <div class="lista-header">
+        <h1>📊 Historial de Ventas</h1>
+    </div>
+
+    <!-- Filtros -->
+    <div class="card p-4 mb-4">
+        <form method="get">
+
+            <div class="form-group">
+                <label>Desde:</label>
+                <input type="date" name="desde" class="form-control" value="{{ fecha_desde }}">
+            </div>
+
+            <div class="form-group">
+                <label>Hasta:</label>
+                <input type="date" name="hasta" class="form-control" value="{{ fecha_hasta }}">
+            </div>
+
+            <div class="form-group">
+                <label>Cliente:</label>
+                <input type="text" name="cliente" class="form-control" value="{{ cliente }}">
+            </div>
+
+            <div class="form-group">
+                <label>Producto:</label>
+                <select name="producto" class="form-control">
+                    <option value="">Todos</option>
+                    {% for p in productos %}
+                        <option value="{{ p.id }}" {% if p.id|stringformat:"s" == producto_id %}selected{% endif %}>
+                            {{ p.nombre }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- Total recaudado -->
+    <div class="card p-4 mb-4">
+        <h2>Total Recaudado: ${{ total_recaudado }}</h2>
+    </div>
+
+    <!-- Tabla -->
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Fecha</th>
+                <th>Cliente</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Valor Total</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for v in ventas %}
+            <tr>
+                <td>{{ v.fecha }}</td>
+                <td>{{ v.cliente }}</td>
+                <td>{{ v.producto.nombre }}</td>
+                <td>{{ v.cantidad }}</td>
+                <td>${{ v.valor_total }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">No hay ventas con los filtros aplicados</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

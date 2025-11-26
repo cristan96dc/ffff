@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Home - Sistema de Stock</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 40px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            width: 230px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: .3s;
+        }
+
+        .card:hover {
+            transform: scale(1.04);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
+        .emoji {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .card a {
+            display: block;
+            font-size: 18px;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>🏠 Sistema de Stock</h1>
+
+<div class="container">
+
+    <div class="card">
+        <div class="emoji">📦</div>
+        <a href="{% url 'lista_productos' %}">Lista de Productos</a>
+    </div>
+
+    <div class="card">
+        <div class="emoji">🏷️</div>
+        <a href="{% url 'crear_tipo' %}">Crear Tipo</a>
+    </div>
+
+    <div class="card">
+        <div class="emoji">🛒</div>
+        <a href="{% url 'crear_producto' %}">Crear Producto</a>
+    </div>
+
+    <div class="card">
+        <div class="emoji">➕</div>
+        <a href="{% url 'lista_productos' %}">Actualizar Stock</a>
+    </div>
+
+    <div class="card">
+        <div class="emoji">💸</div>
+        <a href="{% url 'venta' %}">Registrar Venta</a>
+    </div>
+
+    <div class="card">
+        <div class="emoji">📊</div>
+        <a href="{% url 'consultar_ventas' %}">Historial de Ventas</a>
+    </div>
+
+</div>
+
+</body>
+</html>
