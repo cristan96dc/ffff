@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel de Productos y Gestión</title>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>📦 Panel de Productos</h1>
+        <div>
+            <a href="{% url 'crear_tipo' %}" class="btn btn-secondary me-2">🏷️ Crear Tipo</a>
+            <a href="{% url 'crear_producto' %}" class="btn btn-primary">➕ Crear Producto</a>
+        </div>
+    </div>
+    
+    <hr>
+    
+    <div class="card shadow-sm p-4 mb-4">
+        <form method="GET" action="{% url 'lista_productos' %}" class="row g-3 align-items-end">
+            
+            <div class="col-md-5">
+                <label for="inputNombre" class="form-label fw-bold">Buscar por Nombre</label>
+                <input type="text" class="form-control" id="inputNombre" name="nombre" placeholder="Ej: Café Blend" value="{{ query_nombre }}">
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputTipo" class="form-label fw-bold">Filtrar por Tipo</label>
+                <select id="inputTipo" name="tipo" class="form-select">
+                    <option value="">Todos los Tipos</option>
+                    {% for tipo in tipos %}
+                        <option value="{{ tipo.id }}" {% if query_tipo_id|stringformat:"s" == tipo.id|stringformat:"s" %}selected{% endif %}>
+                            {{ tipo.nombre }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-md-3 d-grid">
+                <button type="submit" class="btn btn-success">
+                    <i class="bi bi-search"></i> Buscar
+                </button>
+                <a href="{% url 'lista_productos' %}" class="btn btn-outline-danger mt-2">
+                    <i class="bi bi-x-circle"></i> Limpiar Filtros
+                </a>
+            </div>
+        </form>
+    </div>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="table-responsive mt-4">
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Tipo</th>
+                    <th>Stock Actual</th>
+                    <th>Umbral Alerta</th>
+                    <th>Valor</th>
+                    <th>Última Modificación</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for p in productos %}
+                <tr {% if p.cantidad <= p.umbral_alerta %}class="table-danger"{% endif %}>
+                    <td>{{ p.id }}</td>
+                    <td>{{ p.nombre }}</td>
+                    <td>{{ p.tipo.nombre }}</td>
+                    <td class="fw-bold {% if p.cantidad <= p.umbral_alerta %}text-danger{% endif %}">{{ p.cantidad }}</td>
+                    <td>{{ p.umbral_alerta }}</td>
+                    <td>${{ p.valor }}</td>
+                    <td>{{ p.fecha_modificacion|date:"d/m/Y H:i" }}</td>
+                    <td class="text-center">
+                        <a href="{% url 'actualizar_stock' p.id %}" class="btn btn-info btn-sm me-2">
+                            <i class="bi bi-arrow-up-down"></i> Stock
+                        </a>
+                        <a href="{% url 'editar_producto' p.id %}" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil-square"></i> Editar
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8" class="text-center">No hay productos que coincidan con la búsqueda.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
